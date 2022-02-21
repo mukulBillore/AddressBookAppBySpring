@@ -1,7 +1,16 @@
 package com.bridgelabz.addressBookAppInSpring.model;
 
-public class AddressBookModel {
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
 
+@Entity
+@Table(name="addressBookDetails")
+public class AddressBookModel {
+	@Id
+	@GeneratedValue
 	private Integer id;
 	private String firstName;
 	private String lastName;
@@ -9,6 +18,7 @@ public class AddressBookModel {
 	private long phoneNumber;
 	private String city;
 	private String state;
+	@Column(name="zipCode")
 	private Integer zip;
 
 	public AddressBookModel() {}
@@ -42,6 +52,17 @@ public class AddressBookModel {
 	
 
 
+	public AddressBookModel(AddressBookModel objAddressBook) {
+		this.id = objAddressBook.getId();
+		this.firstName = objAddressBook.getFirstName();
+		this.lastName = objAddressBook.getLastName();
+		this.email = objAddressBook.getEmail();
+		this.phoneNumber = objAddressBook.getPhoneNumber();
+		this.city = objAddressBook.getCity();
+		this.state = objAddressBook.getState();
+		this.zip = objAddressBook.getZip();
+	
+	}
 	public Integer getId() {
 		return id;
 	}
