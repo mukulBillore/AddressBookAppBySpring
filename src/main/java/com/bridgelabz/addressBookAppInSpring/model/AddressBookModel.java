@@ -24,7 +24,7 @@ public class AddressBookModel {
 	private Integer zip;
 	
 	
-	//default constructor
+	//default constructor is added 
 	public AddressBookModel() {}
 	
 	
