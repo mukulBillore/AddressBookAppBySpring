@@ -23,8 +23,10 @@ public class AddressBookModel {
 	@Column(name="zipCode")
 	private Integer zip;
 	
+	
 	//default constructor
 	public AddressBookModel() {}
+	
 	
 	// constructor with Class obj and id 
 	public AddressBookModel(AddressBookModel objAddressBook, Integer id1) {
@@ -39,7 +41,7 @@ public class AddressBookModel {
 
 	}
 	
-
+	// constructor for dto ref object is passed as parameter
 	public AddressBookModel(AddressBookDTO objAddressBook) {
 		this.firstName = objAddressBook.getFirstName();
 		this.lastName = objAddressBook.getLastName();
@@ -53,7 +55,7 @@ public class AddressBookModel {
 
 	
 
-
+    // model fields costructor by model ref object parameter
 	public AddressBookModel(AddressBookModel objAddressBook) {
 		this.id = objAddressBook.getId();
 		this.firstName = objAddressBook.getFirstName();
@@ -65,6 +67,21 @@ public class AddressBookModel {
 		this.zip = objAddressBook.getZip();
 	
 	}
+	// constructor for dto ref and id as parameter
+	public AddressBookModel(AddressBookDTO objAddressBook, int id2) {
+		this.id=id2;
+		this.firstName = objAddressBook.getFirstName();
+		this.lastName = objAddressBook.getLastName();
+		this.email = objAddressBook.getEmail();
+		this.phoneNumber = objAddressBook.getPhoneNumber();
+		this.city = objAddressBook.getCity();
+		this.state = objAddressBook.getState();
+		this.zip = objAddressBook.getZip();
+	}
+
+	
+	
+	// Getters and Setters
 	public Integer getId() {
 		return id;
 	}

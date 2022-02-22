@@ -1,6 +1,7 @@
 package com.bridgelabz.addressBookAppInSpring.dto;
 
 public class AddressBookDTO {
+
 	private String firstName;
 	private String lastName;
 	private String email;

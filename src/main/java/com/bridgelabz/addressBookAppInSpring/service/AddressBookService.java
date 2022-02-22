@@ -35,6 +35,14 @@ public class AddressBookService {
 		repo.save(addressBookObj);
 		return repo.findById(id).get();
 	}
+	
+	// update by dto 
+	public AddressBookModel updateAddressBookDataByDTO(AddressBookDTO addressBookdto,int id) {
+		AddressBookModel obj = new AddressBookModel(addressBookdto, id);
+		repo.save(obj);
+		return repo.findById(id).get();
+			
+		}
 
 	// delete service by id
 	public String deletebyID(int id) {
@@ -53,5 +61,6 @@ public class AddressBookService {
 		List<AddressBookModel> listAddressBook = repo.findAll();
 		return listAddressBook;
 	}
+	
 
 }

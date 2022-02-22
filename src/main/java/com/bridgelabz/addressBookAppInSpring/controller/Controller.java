@@ -37,21 +37,20 @@ public class Controller {
 		return name + " ! welcome to Address book system";
 	}
 
-	
 	// Saving the data in the local modal object
 	@PostMapping("/save")
 	public String setBook(@RequestBody AddressBookModel addressBookobj) {
 		String msg = service.saveBook(addressBookobj);
 		return msg;
 	}
-	
-	// update the data in the repo by dto
-		@PostMapping("/saveByDTO")
-		public ResponseEntity<ResponceDTO> savedatabyDTO(@RequestBody AddressBookDTO addressBookdto) {
+
+	// save the data in the repo by dto
+	@PostMapping("/saveByDTO")
+	public ResponseEntity<ResponceDTO> savedatabyDTO(@RequestBody AddressBookDTO addressBookdto) {
 		AddressBookModel newAddressBook = service.saveAddressBookDataByDTO(addressBookdto);
-		ResponceDTO dto = new ResponceDTO("sucussfully saved emp", newAddressBook);
-			return new ResponseEntity(dto, HttpStatus.OK);
-		}
+		ResponceDTO dto = new ResponceDTO("sucussfully saved contect", newAddressBook);
+		return new ResponseEntity(dto, HttpStatus.OK);
+	}
 
 	// find all by id
 	@GetMapping("/findAll")
@@ -73,8 +72,15 @@ public class Controller {
 		AddressBookModel addressBookobj = service.updatebyID(id, obj);
 		return addressBookobj;
 	}
-	
 
+	// update the data in the repo by dto
+	@PostMapping("/updateByDTO/{id}")
+	public ResponseEntity<ResponceDTO> updateDatabyDTOUsingId(@RequestBody AddressBookDTO addressBookdto,
+			@PathVariable int id) {
+		AddressBookModel newAddressBook = service.updateAddressBookDataByDTO(addressBookdto, id);
+		ResponceDTO dto = new ResponceDTO("sucussfully updated contect", newAddressBook);
+		return new ResponseEntity(dto, HttpStatus.OK);
+	}
 
 	// delete by id
 	@DeleteMapping("/delete/{id}")
