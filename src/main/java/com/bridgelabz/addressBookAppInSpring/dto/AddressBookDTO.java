@@ -1,17 +1,32 @@
 package com.bridgelabz.addressBookAppInSpring.dto;
 
-public class AddressBookDTO {
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 
+import org.hibernate.validator.constraints.Length;
+import org.springframework.validation.annotation.Validated;
+
+public class AddressBookDTO {
+	@NotEmpty(message="First name cant be empty")
+	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="Employee firstName is Invalid")
 	private String firstName;
+
+	@NotEmpty(message="Last name cant be empty")
+	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="Employee lastName is Invalid")
 	private String lastName;
+	@NotEmpty(message="Last name cant be empty")
+	//@Pattern(regexp="^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$",message="Employee lastName is Invalid")
 	private String email;
+	
+	@Length(max=10,message="error : your number is not of 10 digit")
+	@Length(min=10,message="error : your number is not of 10 digit")	
 	private long phoneNumber;
 	private String city;
 	private String state;
 	private Integer zip;
 
 	// default constructor
-	public AddressBookDTO() {
+	public AddressBookDTO() {	
 	}
 
 	// constructor using fields

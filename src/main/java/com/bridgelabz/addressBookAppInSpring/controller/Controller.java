@@ -2,6 +2,8 @@ package com.bridgelabz.addressBookAppInSpring.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -25,10 +27,10 @@ public class Controller {
 	@Autowired
 	AddressBookService service;
 
-	// hello msg printing
+	// hello msg printing 
 	@GetMapping("/hello")
 	public String sayHello() {
-		return "welocome to Address book App";
+		return "welocome to Address book ";
 	}
 
 	// hello msg with name
@@ -37,7 +39,7 @@ public class Controller {
 		return name + " ! welcome to Address book system";
 	}
 
-	// Saving the data in the local modal object
+	// Saving the data in the local modal object. 
 	@PostMapping("/save")
 	public String setBook(@RequestBody AddressBookModel addressBookobj) {
 		String msg = service.saveBook(addressBookobj);
@@ -46,7 +48,7 @@ public class Controller {
 
 	// save the data in the repo by dto
 	@PostMapping("/saveByDTO")
-	public ResponseEntity<ResponceDTO> savedatabyDTO(@RequestBody AddressBookDTO addressBookdto) {
+	public ResponseEntity<ResponceDTO> savedatabyDTO(@Valid @RequestBody AddressBookDTO addressBookdto) {
 		AddressBookModel newAddressBook = service.saveAddressBookDataByDTO(addressBookdto);
 		ResponceDTO dto = new ResponceDTO("sucussfully saved contect", newAddressBook);
 		return new ResponseEntity(dto, HttpStatus.OK);
@@ -75,7 +77,7 @@ public class Controller {
 
 	// update the data in the repo by dto
 	@PostMapping("/updateByDTO/{id}")
-	public ResponseEntity<ResponceDTO> updateDatabyDTOUsingId(@RequestBody AddressBookDTO addressBookdto,
+	public ResponseEntity<ResponceDTO> updateDatabyDTOUsingId(@Valid @RequestBody AddressBookDTO addressBookdto,
 			@PathVariable int id) {
 		AddressBookModel newAddressBook = service.updateAddressBookDataByDTO(addressBookdto, id);
 		ResponceDTO dto = new ResponceDTO("sucussfully updated contect", newAddressBook);
