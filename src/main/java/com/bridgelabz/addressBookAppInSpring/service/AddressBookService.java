@@ -56,7 +56,7 @@ public class AddressBookService {
 
 	}
 
-	// find all
+	// find all data of addressbook
 	public List<AddressBookModel> findAll() {
 		List<AddressBookModel> listAddressBook = repo.findAll();
 		return listAddressBook;
