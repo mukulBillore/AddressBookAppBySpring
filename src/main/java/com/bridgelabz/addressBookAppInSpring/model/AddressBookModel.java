@@ -6,6 +6,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import com.bridgelabz.addressBookAppInSpring.dto.AddressBookDTO;
+
 @Entity
 @Table(name="addressBookDetails")
 public class AddressBookModel {
@@ -20,8 +22,11 @@ public class AddressBookModel {
 	private String state;
 	@Column(name="zipCode")
 	private Integer zip;
-
+	
+	//default constructor
 	public AddressBookModel() {}
+	
+	// constructor with Class obj and id 
 	public AddressBookModel(AddressBookModel objAddressBook, Integer id1) {
 		this.id = id1;
 		this.firstName = objAddressBook.getFirstName();
@@ -34,20 +39,17 @@ public class AddressBookModel {
 
 	}
 	
-/*
-	public AddressBookModel(Integer id, String firstName, String lastName, String email, long phoneNumber, String city,
-			String state, Integer zip) {
-		super();
-		this.id = id;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.email = email;
-		this.phoneNumber = phoneNumber;
-		this.city = city;
-		this.state = state;
-		this.zip = zip;
+
+	public AddressBookModel(AddressBookDTO objAddressBook) {
+		this.firstName = objAddressBook.getFirstName();
+		this.lastName = objAddressBook.getLastName();
+		this.email = objAddressBook.getEmail();
+		this.phoneNumber = objAddressBook.getPhoneNumber();
+		this.city = objAddressBook.getCity();
+		this.state = objAddressBook.getState();
+		this.zip = objAddressBook.getZip();
 	}
-*/
+
 
 	
 

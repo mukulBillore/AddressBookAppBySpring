@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.bridgelabz.addressBookAppInSpring.dto.AddressBookDTO;
 import com.bridgelabz.addressBookAppInSpring.model.AddressBookModel;
 import com.bridgelabz.addressBookAppInSpring.repository.AddressBookRepoInterface;
 
@@ -13,6 +14,7 @@ public class AddressBookService {
 	@Autowired
 	AddressBookRepoInterface repo;
 
+	// save the details
 	public String saveBook(AddressBookModel objAddressBook) {
 		AddressBookModel addressBookObj = new AddressBookModel(objAddressBook);
 		repo.save(addressBookObj);
@@ -20,6 +22,14 @@ public class AddressBookService {
 				+ addressBookObj.getLastName();
 	}
 
+	// save the details through dto
+	public AddressBookModel saveAddressBookDataByDTO(AddressBookDTO addressBookdto) {
+		AddressBookModel obj = new AddressBookModel(addressBookdto);
+		repo.save(obj);
+		return obj;
+	}
+
+	// update by id
 	public AddressBookModel updatebyID(int id, AddressBookModel obj) {
 		AddressBookModel addressBookObj = new AddressBookModel(obj, id);
 		repo.save(addressBookObj);
