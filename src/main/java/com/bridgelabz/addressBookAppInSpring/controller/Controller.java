@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.bridgelabz.addressBookAppInSpring.dto.AddressBookDTO;
-import com.bridgelabz.addressBookAppInSpring.dto.ResponceDTO;
+import com.bridgelabz.addressBookAppInSpring.dto.ResponseDTO;
 import com.bridgelabz.addressBookAppInSpring.model.AddressBookModel;
 import com.bridgelabz.addressBookAppInSpring.service.AddressBookService;
 
@@ -34,24 +34,24 @@ public class Controller {
 	}
 
 	// hello msg with name
-	@PostMapping("/nameHi")
+	@PostMapping("/helloByName")
 	public String mapbyName(@RequestParam String name) {
 		return name + " ! welcome to Address book system";
 	}
 
 	// Saving the data in the local modal object. 
-	@PostMapping("/save")
+	@PostMapping("/saveData")
 	public String setBook(@RequestBody AddressBookModel addressBookobj) {
 		String msg = service.saveBook(addressBookobj);
 		return msg;
 	}
 
 	// save the data in the repo by dto
-	@PostMapping("/saveByDTO")
-	public ResponseEntity<ResponceDTO> savedatabyDTO( @Valid @RequestBody AddressBookDTO addressBookdto) {
+	@PostMapping("/save")
+	public ResponseEntity<ResponseDTO> savedatabyDTO( @Valid @RequestBody AddressBookDTO addressBookdto) {
 		AddressBookModel newAddressBook = service.saveAddressBookDataByDTO(addressBookdto);
-		ResponceDTO dto = new ResponceDTO("sucussfully saved contect", newAddressBook);
-		return new ResponseEntity(dto, HttpStatus.OK);
+		ResponseDTO responsedto = new ResponseDTO("sucussfully saved contect", newAddressBook);
+		return new ResponseEntity(responsedto, HttpStatus.OK);
 	}
 
 	// find all by id
@@ -64,23 +64,23 @@ public class Controller {
 	// find by id
 	@GetMapping("/findById/{id}")
 	public AddressBookModel setBook(@PathVariable int id) {
-		AddressBookModel addressBookobj = service.findBookById(id);
-		return addressBookobj;
+		AddressBookModel addressBookModel = service.findBookById(id);
+		return addressBookModel;
 	}
 
 	// update the data in the repo
-	@PutMapping("/update/{id}")
+	@PutMapping("/updateData/{id}")
 	public AddressBookModel updateBookById(@PathVariable int id, @RequestBody AddressBookModel obj) {
-		AddressBookModel addressBookobj = service.updatebyID(id, obj);
-		return addressBookobj;
+		AddressBookModel addressBookModel = service.updatebyID(id, obj);
+		return addressBookModel;
 	}
 
 	// update the data in the repo by dto
-	@PostMapping("/updateByDTO/{id}")
-	public ResponseEntity<ResponceDTO> updateDatabyDTOUsingId(@Valid @RequestBody AddressBookDTO addressBookdto,
+	@PostMapping("/update/{id}")
+	public ResponseEntity<ResponseDTO> updateDatabyDTOUsingId(@Valid @RequestBody AddressBookDTO addressBookdto,
 			@PathVariable int id) {
 		AddressBookModel newAddressBook = service.updateAddressBookDataByDTO(addressBookdto, id);
-		ResponceDTO dto = new ResponceDTO("sucussfully updated contect", newAddressBook);
+		ResponseDTO dto = new ResponseDTO("sucussfully updated contect", newAddressBook);
 		return new ResponseEntity(dto, HttpStatus.OK);
 	}
 

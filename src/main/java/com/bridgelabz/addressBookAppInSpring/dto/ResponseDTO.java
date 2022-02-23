@@ -2,27 +2,26 @@ package com.bridgelabz.addressBookAppInSpring.dto;
 
 import com.bridgelabz.addressBookAppInSpring.model.AddressBookModel;
 
-public class ResponceDTO {
+public class ResponseDTO {
 	private String msg;
 	private Object data;
 
 	
 	
-	// constructor with string and model ref as parameter
-	public ResponceDTO(String msg, Object data) {
+	// constructor with string and model refrence as parameter
+	public ResponseDTO(String msg, Object data) {
 		super();
 		this.msg = msg;
 		this.data = data;
 	}
 	
 	// default constructor
-	public ResponceDTO() {
+	public ResponseDTO() {
 	}
 
 	
 	// getters and setters
 	// why do we need getters and setters here
-
 	public String getMsg() {
 		return msg;
 	}

@@ -10,26 +10,30 @@ import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-import com.bridgelabz.addressBookAppInSpring.dto.ResponceDTO;
+import com.bridgelabz.addressBookAppInSpring.dto.ResponseDTO;
 
 @ControllerAdvice
 public class AddressBookExceptionHandler {
+	
+	// handles  the exception when the regex fails 
 	@ExceptionHandler(MethodArgumentNotValidException.class)
-	public ResponseEntity<ResponceDTO> handlerMethodArgumentNotValidException(
+	public ResponseEntity<ResponseDTO> handlerMethodArgumentNotValidException(
 			MethodArgumentNotValidException exception) {
 
 		List<ObjectError> errorList = exception.getBindingResult().getAllErrors();
 		List<String> errMesg = errorList.stream().map(objErr -> objErr.getDefaultMessage())
 				.collect(Collectors.toList());
 
-		ResponceDTO responseDTO = new ResponceDTO("Exception while processing REST requests", errMesg);
-		ResponseEntity<ResponceDTO> responce = new ResponseEntity<ResponceDTO>(responseDTO, HttpStatus.BAD_REQUEST);
-		return responce;
+		ResponseDTO responseDTO = new ResponseDTO("Exception while processing REST requests", errMesg);
+		ResponseEntity<ResponseDTO> responseEntity = new ResponseEntity<ResponseDTO>(responseDTO, HttpStatus.BAD_REQUEST);
+		return responseEntity;
 	}
+	
+	// handles the exceptions of when the "EmployeePayrollException" is throws down .
 	@ExceptionHandler(AddressBookException.class)
-	public ResponseEntity<ResponceDTO> handleEmployeeNotFound(AddressBookException exception) {
-		ResponceDTO responce = new ResponceDTO("Invalid id input", exception.getMessage());
-		return new ResponseEntity<ResponceDTO>(responce, HttpStatus.BAD_REQUEST);
+	public ResponseEntity<ResponseDTO> handleEmployeeNotFound(AddressBookException exception) {
+		ResponseDTO responsedto = new ResponseDTO("Invalid id input", exception.getMessage());
+		return new ResponseEntity<ResponseDTO>(responsedto, HttpStatus.BAD_REQUEST);
 }
 
 

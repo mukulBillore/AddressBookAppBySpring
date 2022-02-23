@@ -28,7 +28,7 @@ public class AddressBookModel {
 	public AddressBookModel() {}
 	
 	
-	// constructor with Class obj and id 
+	// constructor with Class model object and id 
 	public AddressBookModel(AddressBookModel objAddressBook, Integer id1) {
 		this.id = id1;
 		this.firstName = objAddressBook.getFirstName();
@@ -41,7 +41,7 @@ public class AddressBookModel {
 
 	}
 	
-	// constructor for dto ref object is passed as parameter
+	// constructor for dto refrence object is passed as parameter
 	public AddressBookModel(AddressBookDTO objAddressBook) {
 		this.firstName = objAddressBook.getFirstName();
 		this.lastName = objAddressBook.getLastName();
@@ -55,7 +55,7 @@ public class AddressBookModel {
 
 	
 
-    // model fields costructor by model ref object parameter
+    // model fields costructor by model refrance object parameter
 	public AddressBookModel(AddressBookModel objAddressBook) {
 		this.id = objAddressBook.getId();
 		this.firstName = objAddressBook.getFirstName();
@@ -67,7 +67,7 @@ public class AddressBookModel {
 		this.zip = objAddressBook.getZip();
 	
 	}
-	// constructor for dto ref and id as parameter
+	// constructor for dto refrence and id as parameter
 	public AddressBookModel(AddressBookDTO objAddressBook, int id2) {
 		this.id=id2;
 		this.firstName = objAddressBook.getFirstName();

@@ -6,21 +6,21 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
 
-@Validated
+
 public class AddressBookDTO {
 	@NotEmpty(message="First name cant be empty")
-	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="Employee firstName is Invalid")
+	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="Person firstName is Invalid")
 	private String firstName;
 
 	@NotEmpty(message="Last name cant be empty")
-	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="Employee lastName is Invalid")
+	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="Person lastName is Invalid")
 	private String lastName;
 	@NotEmpty(message="Last name cant be empty")
 	//@Pattern(regexp="^[a-zA-Z0-9_!#$%&'*+/=?`{|}~^.-]+@[a-zA-Z0-9.-]+$",message="Employee lastName is Invalid")
 	private String email;
 	
-	@Length(max=10,message="error : your number is not of 10 digit")
-	@Length(min=10,message="error : your number is not of 10 digit")	
+	//@Length(max=10,message="error : your number is not of 10 digit")
+	//@Length(min=10,message="error : your number is not of 10 digit")	
 	private long phoneNumber;
 	private String city;
 	private String state;

@@ -16,7 +16,7 @@ public class AddressBookService {
 	@Autowired
 	AddressBookRepoInterface repo;
 
-	// save the details
+	// save the details in db
 	public String saveBook(AddressBookModel objAddressBook) {
 		AddressBookModel addressBookObj = new AddressBookModel(objAddressBook);
 		repo.save(addressBookObj);
@@ -24,14 +24,14 @@ public class AddressBookService {
 				+ addressBookObj.getLastName();
 	}
 
-	// save the details through dto
+	// save the details through dto in db
 	public AddressBookModel saveAddressBookDataByDTO(AddressBookDTO addressBookdto) {
 		AddressBookModel obj = new AddressBookModel(addressBookdto);
 		repo.save(obj);
 		return obj;
 	}
 
-	// find by id
+	// find by id from db
 	public AddressBookModel findBookById(int id) {
 		Optional<AddressBookModel> objAddressBook = repo.findById(id);
 		if (objAddressBook.isEmpty()) {
@@ -41,13 +41,13 @@ public class AddressBookService {
 
 	}
 
-	// find all data of addressbook
+	// find all data of db
 	public List<AddressBookModel> findAll() {
 		List<AddressBookModel> listAddressBook = repo.findAll();
 		return listAddressBook;
 	}
 
-	// update by id
+	// update contect from db by id 
 	public AddressBookModel updatebyID(int id, AddressBookModel obj) {
 		AddressBookModel addressBookObj;
 		Optional<AddressBookModel> objAddressBook = repo.findById(id);
@@ -61,7 +61,7 @@ public class AddressBookService {
 		return repo.findById(id).get();
 	}
 
-	// update by dto
+	// update contect from db by dto
 	public AddressBookModel updateAddressBookDataByDTO(AddressBookDTO addressBookdto, int id) {
 		AddressBookModel obj = new AddressBookModel(addressBookdto, id);
 		repo.save(obj);
@@ -69,7 +69,7 @@ public class AddressBookService {
 
 	}
 
-	// delete service by id
+	// delete contect from db  by id
 	public String deletebyID(int id) {
 		Optional<AddressBookModel> addressBookObj = repo.findById(id);
 		if (addressBookObj.isEmpty()) {
