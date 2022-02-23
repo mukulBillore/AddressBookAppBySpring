@@ -6,6 +6,7 @@ import javax.validation.constraints.Pattern;
 import org.hibernate.validator.constraints.Length;
 import org.springframework.validation.annotation.Validated;
 
+@Validated
 public class AddressBookDTO {
 	@NotEmpty(message="First name cant be empty")
 	@Pattern(regexp="^[A-Z]{1}[a-zA-Z\\s]{2,}$",message="Employee firstName is Invalid")

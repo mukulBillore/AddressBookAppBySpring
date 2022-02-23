@@ -48,7 +48,7 @@ public class Controller {
 
 	// save the data in the repo by dto
 	@PostMapping("/saveByDTO")
-	public ResponseEntity<ResponceDTO> savedatabyDTO(@Valid @RequestBody AddressBookDTO addressBookdto) {
+	public ResponseEntity<ResponceDTO> savedatabyDTO( @Valid @RequestBody AddressBookDTO addressBookdto) {
 		AddressBookModel newAddressBook = service.saveAddressBookDataByDTO(addressBookdto);
 		ResponceDTO dto = new ResponceDTO("sucussfully saved contect", newAddressBook);
 		return new ResponseEntity(dto, HttpStatus.OK);

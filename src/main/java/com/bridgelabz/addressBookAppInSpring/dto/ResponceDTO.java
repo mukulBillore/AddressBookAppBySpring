@@ -9,11 +9,11 @@ public class ResponceDTO {
 	
 	
 	// constructor with string and model ref as parameter
-	public ResponceDTO(String string, AddressBookModel newAddressBook) {
-		this.msg = string;
-		this.data = newAddressBook;
+	public ResponceDTO(String msg, Object data) {
+		super();
+		this.msg = msg;
+		this.data = data;
 	}
-	
 	
 	// default constructor
 	public ResponceDTO() {
