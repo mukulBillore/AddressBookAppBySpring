@@ -26,5 +26,11 @@ public class AddressBookExceptionHandler {
 		ResponseEntity<ResponceDTO> responce = new ResponseEntity<ResponceDTO>(responseDTO, HttpStatus.BAD_REQUEST);
 		return responce;
 	}
+	@ExceptionHandler(AddressBookException.class)
+	public ResponseEntity<ResponceDTO> handleEmployeeNotFound(AddressBookException exception) {
+		ResponceDTO responce = new ResponceDTO("Invalid id input", exception.getMessage());
+		return new ResponseEntity<ResponceDTO>(responce, HttpStatus.BAD_REQUEST);
+}
+
 
 }
